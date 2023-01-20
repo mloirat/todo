@@ -69,7 +69,9 @@ function App() {
 
   function searchByTown() {
     let townWanted =ref.current.value;
-    callApiWeather(townWanted);
+    if(townWanted){
+      callApiWeather(townWanted);
+    }
   }
 
   return (
