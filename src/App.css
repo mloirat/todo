@@ -41,3 +41,24 @@
   width: 20px;
   padding-right: 12px;;
 }
+
+hr{
+  text-shadow: 1px 1px 1px grey;
+}
+
+.flexLine {
+  display: flex;
+  flex-direction: row;
+}
+
+#localisation{
+  align-items: baseline;
+  align-items: center;
+  margin : 0 auto;
+  max-width: 600;
+}
+.iconW {
+  max-width: 180px;
+  min-width: 40px;
+  padding: 30px;
+}

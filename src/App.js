@@ -13,14 +13,14 @@ function App() {
   const [temperature, setTemperature] = React.useState(0); //mettre à jour la température
   const [weather, setWeather] = React.useState(""); //mettre à jour la condition météo
   const [tips, setTips] = React.useState(""); //mettre à jour le conseil
-  const [icon, setIcone] = React.useState(""); //mettre à jour le conseil
+  const [icon, setIcon] = React.useState(""); //mettre à jour le conseil
 
 
   function geolocalisation (){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(callApiGeo); //callback si tout se passe bien, réussi à récupérer la position
     }else{
-        console.log("ERROOR");
+        setTips("Localisation pas accessible");
     }
   }
 
@@ -47,44 +47,51 @@ function App() {
     if(meteo==="sunny"){
       setWeather("Soleil");
       setTips("Mettez un tee-shirt.");
+      setIcon("sun.png");
     }else if (meteo ==="cloudy"){
       setWeather("Nuageux");
       setTips("Prenez une veste.");
+      setIcon("cloud.png");
     }else if (meteo ==="windy"){
       setWeather("Venteux");
       setTips("Prenez un coupe-vent.");
+      setIcon("wind.png");
     }else if (meteo ==="rainy"){
       setWeather("Pluie");
       setTips("Prenez un parapluie.");
+      setIcon("rain.png");
     }else if (meteo ==="stormy"){
       setWeather("Tempête");
       setTips("Prenez un anorak.");
+      setIcon("storm.png");
     }
   }
 
- 
-
-  function clickTest() {
-    console.log("Bouton");
+  function searchByTown() {
+    let townWanted =ref.current.value;
+    callApiWeather(townWanted);
   }
+
   return (
     <div className="App">
       <header className="App-header">
         <div className='AppContent'>  
           <div>
-            <img src="search.png" className='searchIcon' alt="React Image" onClick={callApiGeo} />
+            <img src="search.png" className='searchIcon' alt="React Image" onClick={searchByTown} />
             <input ref={ref} type="search" id="searchInput" placeholder='Rechercher'></input>
           </div>
-          <div id="localisation">
+          <div className="flexLine" id="localisation">
              <b>{town}</b>  
              <p>.   FRANCE</p>
           </div>
           <hr></hr>
-          <div>
-            <h1>{temperature}°C</h1>
-            <div>{weather}  </div>
+          <div  className="flexLine">
             <div>
-              <img  alt={weather}></img> 
+                <h1>{temperature}°C</h1>
+                <h3>{weather} </h3>
+              </div>
+            <div>
+              <img src={icon} className="iconW" alt={weather}></img> 
             </div>
           </div>
           <hr></hr>
