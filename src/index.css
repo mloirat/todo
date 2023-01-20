@@ -14,19 +14,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-.crossDelete {
-  width:20px;
-  height:20px;
-  color: rgba(100, 0, 0, 0.162);
-}
-
-.titleToDos{
-  font-size: large;
-  font-weight: bold;
-}
-
-hr{
-  background-color: rgba(199, 199, 199, 0.316);
-}
